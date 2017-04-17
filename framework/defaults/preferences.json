@@ -1,0 +1,16 @@
+{
+	"app": {
+		"info": "",
+		"commands": []
+	},
+	"enviroment": "dev",
+	"enviromentMapping": {
+		"enviroment": "APP_ENV"
+	},
+	"logging": {
+		"fileLogging": true,
+		"directory": "./tmp/log/",
+		"info": "{{enviroment}}-info.log",
+		"error": "{{enviroment}}-error.log"
+	}
+}
