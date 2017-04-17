@@ -10,27 +10,27 @@ const upperCamelCase = require('uppercamelcase');
 
 class Add extends Command {
 
-	static action(args, options, logger) {
-		logger.info(`new ${args.element}`);
-		
-		let name = args.name;
-		let NAME = upperCamelCase(args.name);
+  static action(args, options, logger) {
+    logger.info(`new ${args.element}`);
+    
+    let name = args.name;
+    let NAME = upperCamelCase(args.name);
 
-		var source = fs.readFileSync(`${Framework.rootPath}/templates/${args.element}.js`);
-		var template = Handlebars.compile(source.toString());
-		AppHelper.createElement(args.element, NAME, template({ name, NAME }));
-	}
+    var source = fs.readFileSync(`${Framework.rootPath}/templates/${args.element}.js`);
+    var template = Handlebars.compile(source.toString());
+    AppHelper.createElement(args.element, NAME, template({ name, NAME }));
+  }
 
-	static get name() {
-		return 'add';
-	}
+  static get name() {
+    return 'add';
+  }
 
-	static get args() {
-		return [
-			new Argument('<element>', 'The element type to be added.', ['command']),
-			new Argument('<name>', 'The element\'s name.', Argument.STRING)
-		];
-	}
+  static get args() {
+    return [
+      new Argument('<element>', 'The element type to be added.', ['command']),
+      new Argument('<name>', 'The element\'s name.', Argument.STRING)
+    ];
+  }
 
 }
 

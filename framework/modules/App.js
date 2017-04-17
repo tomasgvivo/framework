@@ -2,17 +2,17 @@ const CommandLoader = Framework.include('loaders', 'CommandLoader');
 
 class App {
 
-	get name() {
-		return null;
-	}
+  get name() {
+    return null;
+  }
 
-	get argument() {
-		return null;
-	}
+  get argument() {
+    return null;
+  }
 
-	execute() {
-		CommandLoader.execute(process.argv);
-	}
+  execute() {
+    CommandLoader.execute(process.argv);
+  }
 
 }
 

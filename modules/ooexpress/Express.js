@@ -9,28 +9,28 @@ var Response = require('express/lib/response');
 var Application = require('express/lib/application');
 
 class Express {
-	constructor() {
-		// expose the prototype that will get set on requests
-		this.request = Object.create(Request, {
-			app: { configurable: true, enumerable: true, writable: true, value: this }
-		});
+  constructor() {
+    // expose the prototype that will get set on requests
+    this.request = Object.create(Request, {
+      app: { configurable: true, enumerable: true, writable: true, value: this }
+    });
 
-		// expose the prototype that will get set on responses
-		this.response = Object.create(Response, {
-			app: { configurable: true, enumerable: true, writable: true, value: this }
-		});
+    // expose the prototype that will get set on responses
+    this.response = Object.create(Response, {
+      app: { configurable: true, enumerable: true, writable: true, value: this }
+    });
 
-		this.listen = this._listen;
+    this.listen = this._listen;
 
-		this.init();
-	}
+    this.init();
+  }
 
-	_listen() {
-		var server = http.createServer((req, res, next) => {
-			this.handle(req, res, next);
-		});
-  		return server.listen.apply(server, arguments);
-	}
+  _listen() {
+    var server = http.createServer((req, res, next) => {
+      this.handle(req, res, next);
+    });
+    return server.listen.apply(server, arguments);
+  }
 }
 
 mixin(Express.prototype, EventEmitter.prototype, false);

@@ -3,9 +3,9 @@ const Express = require('./Express');
 const Router = require('./Router');
 
 class Server extends Express {
-	constructor() {
-		super();
-	}
+  constructor() {
+    super();
+  }
 }
 
 var server = new Server();

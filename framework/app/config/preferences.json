@@ -1,9 +1,9 @@
 {
-	"enviroment": "prod",
-	"app": {
-		"version": "0.1.0"
-	},
-	"logging": {
-		"fileLogging": false
-	}
+  "enviroment": "prod",
+  "app": {
+    "version": "0.1.0"
+  },
+  "logging": {
+    "fileLogging": false
+  }
 }
