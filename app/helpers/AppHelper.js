@@ -8,8 +8,8 @@ const rootDir = process.cwd();
 const appPath = Path.join(rootDir, 'app');
 
 const templates = {
-  'application': `${Framework.rootPath}/app/templates/application`,
-  'command': `${Framework.rootPath}/app/templates/app/command.js`
+  'application': `${Framework.appPath}/templates/application`,
+  'command': `${Framework.appPath}/templates/app/command.js`
 }
 
 const elementMap = {
