@@ -2,14 +2,14 @@ const Command = Framework.include('modules', 'commands', 'Command');
 const Argument = Framework.include('modules', 'commands', 'Argument');
 const Option = Framework.include('modules', 'commands', 'Option');
 
-class Info extends Command {
+class Mult extends Command {
 
   static action(args, options, logger) {
-    logger.info(args.num1 + args.num2);
+    logger.info(args.num1 * args.num2);
   }
 
   static get name() {
-    return 'sum';
+    return 'mult';
   }
 
   static get info() {
@@ -18,7 +18,7 @@ class Info extends Command {
 
   static get args() {
     return [
-      new Argument('<num1>', 'Asdi is "asd should describe itself".', Argument.INTEGER),
+      new Argument('<num1>', 'Asdi is "asd should describe itself".', Argument.INTEGER, null),
       new Argument('<num2>', 'Asdi is "asd should describe itself".', Argument.INTEGER),
       new Argument('[num3]', 'Asdi is "asd should describe itself".', Argument.INTEGER)
     ];
@@ -32,4 +32,4 @@ class Info extends Command {
 
 }
 
-module.exports = Info;
+module.exports = Mult;

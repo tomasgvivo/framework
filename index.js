@@ -1,6 +1,6 @@
-#!/usr/bin/node
+#!/usr/local/bin/node
 
-const Framework = require('./framework/Framework');
+const Framework = require('./lib/Framework');
 const App = Framework.include('modules', 'App');
 
 let app = new App();
