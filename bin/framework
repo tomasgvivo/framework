@@ -1,5 +1,9 @@
 #!/usr/local/bin/node
 
+const Path = require('path');
+
+global.rootPath = Path.join(__dirname, '..');
+
 const Framework = require('../lib/Framework');
 const App = Framework.include('modules', 'App');
 
