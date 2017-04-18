@@ -7,7 +7,12 @@ const AppHelper = Framework.require('helpers', 'AppHelper');
 class Add extends Command {
 
   static action(args, options, logger) {
-    logger.info(`new ${args.element}`);
+    switch(args.element) {
+      case 'command':
+        AppHelper.createCommand(args.name);
+        break;
+    }
+    logger.info(`New ${args.element} "${args.name}".`);
   }
 
   static get name() {
