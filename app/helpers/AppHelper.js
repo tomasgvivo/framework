@@ -9,11 +9,13 @@ const appPath = Path.join(rootDir, 'app');
 
 const templates = {
   'application': `${Framework.appPath}/templates/application`,
-  'command': `${Framework.appPath}/templates/app/command.js`
+  'command': `${Framework.appPath}/templates/app/command.js`,
+  'controller': `${Framework.appPath}/templates/app/controller.js`
 }
 
 const elementMap = {
-  'command': 'commands'
+  'command': 'commands',
+  'controller': 'controllers'
 }
 
 class AppHelper {
@@ -51,6 +53,13 @@ class AppHelper {
     this.createElement('command', NAME, template({ name, NAME }));
   }
 
+  static createController(name) {
+    let NAME = upperCamelCase(name);
+    let source = fs.readFileSync(templates['controller']);
+    let template = Handlebars.compile(source.toString());
+    this.createElement('controller', NAME, template({ name, NAME }));
+  }
+
   static createApplication(name) {
     let source = fs.readFileSync(templates['application']);
     fs.writeFileSync(Path.join(rootDir, name), source);
@@ -61,7 +70,9 @@ class AppHelper {
       'app',
       'app/commands',
       'app/config',
-      'app/helpers'
+      'app/helpers',
+      'app/exceptions',
+      'app/resources'
     ];
   }
 

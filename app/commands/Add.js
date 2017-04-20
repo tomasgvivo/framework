@@ -11,6 +11,9 @@ class Add extends Command {
       case 'command':
         AppHelper.createCommand(args.name);
         break;
+      case 'controller':
+        AppHelper.createController(args.name);
+        break;
     }
     logger.info(`New ${args.element} "${args.name}".`);
   }
@@ -21,7 +24,7 @@ class Add extends Command {
 
   static get args() {
     return [
-      new Argument('<element>', 'The element type to be added.', ['command']),
+      new Argument('<element>', 'The element type to be added.', ['command', 'controller']),
       new Argument('<name>', 'The element\'s name.', Argument.STRING)
     ];
   }
