@@ -29,6 +29,10 @@ class Add extends Command {
     ];
   }
 
+  static get visible() {
+    return Framework.mainModule === 'framework' || Framework.preferences.enviroment === 'dev';
+  }
+
 }
 
 module.exports = Add;
