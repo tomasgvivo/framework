@@ -9,6 +9,8 @@ let Controllers = [];
 let httpServer = null;
 let httpsServer = null;
 
+let config = Framework.preferences.server;
+
 class Server {
 
   static staticConstructor() {
@@ -18,7 +20,6 @@ class Server {
 
   static start() {
     let promises = [];
-    let config = Framework.preferences.server;
 
     if(config.http) {
       httpServer = http.createServer(app);
@@ -49,6 +50,14 @@ class Server {
     Controllers.forEach((Controller) => {
       (new Controller).mountTo(app);
     });
+  }
+
+  static getHttpUrl() {
+    return config.http ? `http://${config.http.host}:${config.http.port}` : null;
+  }
+
+  static getHttpsUrl() {
+    return config.http ? `https://${config.https.host}:${config.https.port}` : null;
   }
 
 }
