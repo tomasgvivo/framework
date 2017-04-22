@@ -1,4 +1,4 @@
-const Controller = Framework.include('modules', 'controllers', 'Controller');
+const Controller = Framework.include('framework', 'modules', 'controllers', 'Controller');
 
 class {{NAME}}Controller extends Controller {
 

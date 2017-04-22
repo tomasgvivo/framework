@@ -1,11 +1,17 @@
 #!/usr/local/bin/node
 
 const Path = require('path');
+global.rootPath = Path.normalize(Path.join(__dirname, '..'));
 
-global.rootPath = Path.join(__dirname, '..');
+/**
+ * Require Framework.
+ * From now on, Framework is accessible globaly.
+ */
+require('../');
 
-const Framework = require('../lib/Framework');
-const App = Framework.include('modules', 'App');
-
-let app = new App();
-app.execute();
+/**
+ * If this is the main module, execute the application.
+ */
+if(module.filename === require.main.filename) {
+  Framework.run();
+}

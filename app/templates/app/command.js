@@ -1,6 +1,6 @@
-const Command = Framework.include('modules', 'commands', 'Command');
-const Argument = Framework.include('modules', 'commands', 'Argument');
-const Option = Framework.include('modules', 'commands', 'Option');
+const Command = Framework.include('framework', 'modules', 'commands', 'Command');
+const Argument = Framework.include('framework', 'modules', 'commands', 'Argument');
+const Option = Framework.include('framework', 'modules', 'commands', 'Option');
 
 class {{NAME}} extends Command {
 
