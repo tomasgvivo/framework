@@ -5,8 +5,7 @@ const Server = Framework.include('server', 'Server');
 class Run extends Command {
 
   static action(args, options, logger) {
-    let server = new Server();
-    server.start().then(() => {
+    Server.start().then(() => {
       let serverPreferences = Framework.preferences.server;
       if(serverPreferences.http) {
         Framework.logger.info(`HTTP server running on port ${serverPreferences.http.host}:${serverPreferences.http.port}`);

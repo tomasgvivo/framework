@@ -3,23 +3,25 @@ const https = require('https');
 
 const express = require('express');
 
+let app = express();
+let Controllers = [];
+
+let httpServer = null;
+let httpsServer = null;
+
 class Server {
 
-  constructor() {
-    let app = express();
-    this.app = app;
-
-    let Controllers = this.loadControllers();
-    this.mountControllers(Controllers);
+  static staticConstructor() {
+    Controllers = Server.loadControllers();
+    Server.mountControllers(Controllers);
   }
 
-  start() {
+  static start() {
     let promises = [];
     let config = Framework.preferences.server;
 
     if(config.http) {
-      let httpServer = http.createServer(this.app);
-      this.httpServer = httpServer;
+      httpServer = http.createServer(app);
       promises.push(new Promise((resolve, reject) => {
         httpServer.on('error', reject);
         httpServer.listen(config.http.port, config.http.host, resolve);
@@ -27,8 +29,7 @@ class Server {
     }
 
     if(config.https) {
-      let httpsServer = https.createServer(this.app);
-      this.httpsServer = httpsServer;
+      httpsServer = https.createServer(app);
       promises.push(new Promise((resolve, reject) => {
         httpsServer.on('error', reject);
         httpsServer.listen(config.https.port, config.https.host, resolve);
@@ -38,18 +39,20 @@ class Server {
     return Promise.all(promises);
   }
 
-  loadControllers() {
+  static loadControllers() {
     let controllers = [];
     Framework.requireEach('controllers', (moduleName, isMain, controller) => controllers.push(controller));
     return controllers;
   }
 
-  mountControllers(Controllers) {
+  static mountControllers(Controllers) {
     Controllers.forEach((Controller) => {
-      (new Controller).mountTo(this.app);
+      (new Controller).mountTo(app);
     });
   }
 
 }
+
+Server.staticConstructor();
 
 module.exports = Server;
