@@ -18,6 +18,7 @@
     "lodash": "^4.17.4",
     "micromist": "^1.0.2",
     "mkpath": "^1.0.0",
+    "parse-server": "^2.3.8",
     "uppercamelcase": "^1.1.0",
     "winston": "^2.3.1"
   }

@@ -19,5 +19,14 @@
       "port": 3080
     },
     "https": false
+  },
+  "parse": {
+    "server": {
+      "mountPath": "/api",
+      "appId": "parse",
+      "appName": "parse",
+      "masterKey": "parse",
+      "database": "mongodb://localhost/parse"
+    }
   }
 }
