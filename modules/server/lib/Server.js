@@ -39,7 +39,9 @@ class Server {
   }
 
   loadControllers() {
-    return Framework.requireAll('controllers');
+    let controllers = [];
+    Framework.requireEach('controllers', (moduleName, isMain, controller) => controllers.push(controller));
+    return controllers;
   }
 
   mountControllers(Controllers) {
