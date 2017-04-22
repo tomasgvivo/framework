@@ -52,16 +52,16 @@ class Server {
     });
   }
 
-  static getHttpUrl() {
+  static get httpUrl() {
     return config.http ? `http://${config.http.host}:${config.http.port}` : null;
   }
 
-  static getHttpsUrl() {
-    return config.http ? `https://${config.https.host}:${config.https.port}` : null;
+  static get httpsUrl() {
+    return config.https ? `https://${config.https.host}:${config.https.port}` : null;
   }
 
 }
 
-Server.staticConstructor();
-
 module.exports = Server;
+
+Server.staticConstructor();
