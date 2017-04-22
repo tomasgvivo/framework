@@ -1,6 +1,7 @@
 {
   "app": {
-    "info": ""
+    "info": "",
+    "version": "0.0.0"
   },
   "enviroment": "dev",
   "enviromentMapping": {
