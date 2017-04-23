@@ -1,7 +1,6 @@
 TODO
 ===
 
-* remove ./examples
 * add documentation
 * create a good example
 * add documentation

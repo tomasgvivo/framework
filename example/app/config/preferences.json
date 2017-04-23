@@ -1,9 +1,0 @@
-{
-	"app": {
-		"version": "0.0.0",
-		"info": "Test application",
-		"commands": [
-			"Info"
-		]
-	}
-}
