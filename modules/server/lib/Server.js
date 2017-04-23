@@ -14,6 +14,8 @@ let config = Framework.preferences.server;
 class Server {
 
   static staticConstructor() {
+    app.use(Server.handle);
+
     Controllers = Server.loadControllers();
     Server.mountControllers(Controllers);
   }
@@ -40,15 +42,23 @@ class Server {
     return Promise.all(promises);
   }
 
+  static handle(req, res, next) {
+    Framework.logger.debug(`Request ${req.method} ${req.originalUrl}`);
+    next();
+  }
+
   static loadControllers() {
-    let controllers = [];
-    Framework.requireEach('controllers', (moduleName, isMain, controller) => controllers.push(controller));
-    return controllers;
+    let Controllers = [];
+    Framework.requireEach('controllers', (moduleName, isMain, Controller) => {
+      Controllers.push(Controller);
+    });
+    return Controllers;
   }
 
   static mountControllers(Controllers) {
     Controllers.forEach((Controller) => {
-      (new Controller).mountTo(app);
+      let controller = new Controller;
+      controller.mountTo(app);
     });
   }
 
@@ -58,6 +68,10 @@ class Server {
 
   static get httpsUrl() {
     return config.https ? `https://${config.https.host}:${config.https.port}` : null;
+  }
+
+  static get express() {
+    return app;
   }
 
 }

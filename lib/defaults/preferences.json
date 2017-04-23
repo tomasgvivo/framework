@@ -21,12 +21,19 @@
     "https": false
   },
   "parse": {
+    "appId": "parse",
+    "appName": "parse",
+    "masterKey": "parse",
     "server": {
       "mountPath": "/api",
-      "appId": "parse",
-      "appName": "parse",
-      "masterKey": "parse",
       "database": "mongodb://localhost/parse"
+    },
+    "dashboard": {
+      "mountPath": "/admin"
+    },
+    "admin": {
+      "user": "admin",
+      "pass": "admin"
     }
   }
 }

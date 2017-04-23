@@ -1,7 +1,7 @@
 /**
  * Register this module using the given moduleName.
  */
-Framework.register('parse-server', __dirname);
+Framework.register('parse', __dirname);
 
 /**
  * Load modules using require(moduleName);

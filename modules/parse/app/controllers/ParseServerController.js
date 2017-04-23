@@ -6,18 +6,19 @@ const Controller = Framework.include('server', 'Controller');
 class ParseServerController extends Controller {
 
   constructor() {
-    let config = Framework.preferences.parse.server;
+    let config = Framework.preferences.parse;
 
-    super(config.mountPath);
+    super(config.server.mountPath);
 
     let parseServer = new ParseServer({
       appId: config.appId,
       appName: config.appName,
       masterKey: config.masterKey,
-      serverURL: Server.httpUrl + config.mountPath
+      serverURL: Server.httpUrl + config.server.mountPath,
+      databaseURI: config.server.database
     });
 
-    this.use(parseServer);
+    Server.express.use(config.server.mountPath, parseServer);
   }
 
 }
