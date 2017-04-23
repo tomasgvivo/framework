@@ -1,9 +1,8 @@
 /**
  * Register this module using the given moduleName.
  */
-Framework.register('server', __dirname);
+Framework.register('service', __dirname);
 
 /**
  * Load modules using require(moduleName);
  */
-require('../service');

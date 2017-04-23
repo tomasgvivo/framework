@@ -3,7 +3,7 @@ const https = require('https');
 
 const express = require('express');
 
-let app = express();
+let app = null;
 let Controllers = [];
 
 let httpServer = null;
@@ -13,14 +13,13 @@ let config = Framework.preferences.server;
 
 class Server {
 
-  static staticConstructor() {
+  static start() {
+    app = express();
     app.use(Server.handle);
 
     Controllers = Server.loadControllers();
     Server.mountControllers(Controllers);
-  }
 
-  static start() {
     let promises = [];
 
     if(config.http) {
@@ -77,5 +76,3 @@ class Server {
 }
 
 module.exports = Server;
-
-Server.staticConstructor();

@@ -14,11 +14,11 @@ class ParseServerController extends Controller {
       appId: config.appId,
       appName: config.appName,
       masterKey: config.masterKey,
-      serverURL: Server.httpUrl + config.server.mountPath,
+      serverURL: ( Server.httpsUrl || Server.httpUrl ) + config.server.mountPath,
       databaseURI: config.server.database
     });
 
-    Server.express.use(config.server.mountPath, parseServer);
+    this.use(parseServer);
   }
 
 }
