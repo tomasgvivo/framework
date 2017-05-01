@@ -7,12 +7,6 @@ const upperCamelCase = require('uppercamelcase');
 const rootDir = process.cwd();
 const appPath = Path.join(rootDir, 'app');
 
-const templates = {
-  'application': `${Framework.appPath}/templates/application`,
-  'command': `${Framework.appPath}/templates/app/command.js`,
-  'controller': `${Framework.appPath}/templates/app/controller.js`
-}
-
 const elementMap = {
   'command': 'commands',
   'controller': 'controllers'
@@ -48,21 +42,22 @@ class AppHelper {
 
   static createCommand(name) {
     let NAME = upperCamelCase(name);
-    let source = fs.readFileSync(templates['command']);
+    let source = Framework.resource('framework', 'templates', 'app', 'command.js');
     let template = Handlebars.compile(source.toString());
     this.createElement('command', NAME, template({ name, NAME }));
   }
 
   static createController(name) {
     let NAME = upperCamelCase(name);
-    let source = fs.readFileSync(templates['controller']);
+    let source = Framework.resource('framework', 'templates', 'app', 'controller.js');
     let template = Handlebars.compile(source.toString());
     this.createElement('controller', NAME, template({ name, NAME }));
   }
 
   static createApplication(name) {
-    let source = fs.readFileSync(templates['application']);
-    fs.writeFileSync(Path.join(rootDir, name), source);
+    let source = Framework.resource('framework', 'templates', 'application');
+    let template = Handlebars.compile(source.toString());
+    fs.writeFileSync(Path.join(rootDir, name), template({ name }));
   }
 
   static getDirectoryTree() {

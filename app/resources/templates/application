@@ -1,0 +1,26 @@
+#!/usr/local/bin/node
+
+/**
+ * Require Framework.
+ * From now on, Framework is accessible globaly.
+ */
+require('framework');
+
+/**
+ * Register this module using the given moduleName.
+ */
+Framework.register('{{ name }}', __dirname);
+
+/**
+ * Load modules using require(moduleName);
+ */
+//require('framework/modules/server');
+//require('framework/modules/parse');
+
+
+/**
+ * If this is the main module, execute the application.
+ */
+if(module.filename === require.main.filename) {
+  Framework.run();
+}
