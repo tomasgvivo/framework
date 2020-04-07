@@ -20,7 +20,7 @@
     "micromist": "^1.0.2",
     "mkpath": "^1.0.0",
     "parse-dashboard": "^1.0.25",
-    "parse-server": "^2.3.8",
+    "parse-server": "^4.2.0",
     "uppercamelcase": "^1.1.0",
     "winston": "^2.3.1"
   }
